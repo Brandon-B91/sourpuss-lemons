@@ -12,7 +12,7 @@ module.exports = {
       "accessToken": "IfEj6rXqHyquDCPa_7F3W21VE3atGZdSMQKLjc6loIM",
       "spaceId": "gf95fqn958jr"
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-sitemap", {
+  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-sitemap", `gatsby-plugin-styled-components`, {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"

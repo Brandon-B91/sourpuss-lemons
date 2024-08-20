@@ -6,17 +6,17 @@
     --siteYellow: #FDE674;
     --black: #000;
     --fontColor: #f4f4f4;
+    --bodyFontColor: #f4f4f4;
 
     /* Fonts */
     --mainFont: 'open-sans';
-    --secondaryFont: '';
 
+    /* Sizes */
     --fontXs: 1rem;
     --fontSm: 1.75rem;
     --fontMd: 2.25rem;
     --fontLg: 3.5rem;
 
-    --bodyFontColor: #f4f4f4;
 }
  
 * {
@@ -47,4 +47,10 @@ ul li {
  html body {
     background: #fff;
     color: var(--bodyFontColor);
+ }
+
+ /* Specialty Board */
+
+ @media (max-width: 768px) {
+    .card { margin-bottom: 5rem; }
  }

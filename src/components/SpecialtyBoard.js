@@ -32,10 +32,6 @@ const card = {
   position: 'relative',
   border: ' 2px solid var(--siteYellow)',
   boxShadow: '0 0 8px black',
-
-  ...(window.innerWidth <= 768 && {
-    marginBottom: '5rem',
-  }),
 };
 
 const cardTitle = {

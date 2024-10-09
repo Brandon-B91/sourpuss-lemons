@@ -26,17 +26,18 @@ const Header = () => {
     <>
     <header style={headerStyle}>
         <StaticImage 
-        src='../images/header-logo.png'
-        alt='Sourpuss Lemonade'
-        style={headerImg}
+          src='../images/header-logo.png'
+          alt='Sourpuss Lemonade'
+          style={headerImg}
         />
     </header>
-    <div className="hero-section">
+    <div className="hero-section-img">
         <StaticImage
-        src='../images/hero-img.jpeg'
-        alt='Sourpuss Lemonade stand'
-        width={1600}
-        height={800}
+          src='../images/hero-img.jpeg'
+          alt='Sourpuss Lemonade stand'
+          placeholder="blurred"
+          width={2100}
+          height={800}
         />
     </div>
     </>

@@ -9,7 +9,7 @@
     --bodyFontColor: #f4f4f4;
 
     /* Fonts */
-    --mainFont: 'open-sans';
+    --mainFont: open-sans;
 
     /* Sizes */
     --fontXs: 1rem;
@@ -49,8 +49,63 @@ ul li {
     color: var(--bodyFontColor);
  }
 
+ /* Menu Board */
+ .menu-board ul {
+    padding: 0 !important;
+ }
+
  /* Specialty Board */
+
+ .slick-slide { 
+    padding: 3rem 1rem;
+}
+
+.drink-card {
+  min-height: 15rem;
+  max-width: 15rem;
+  margin: 0 1rem;
+  background: var(--sitePink);
+  color: var(--black);
+  position: relative;
+  border:  2px solid var(--siteYellow);
+  box-shadow: 0 0 8px black;
+ }
 
  @media (max-width: 768px) {
     .card { margin-bottom: 5rem; }
  }
+
+ /* Lotus Banner */
+
+ @media( max-width: 768px) {
+    .lotus-banner-p {
+        right: 5% !important;
+        font-size: 1rem !important;
+        max-width: 90% !important;
+        margin: 0 auto !important;
+     }
+ }
+
+ /* Location Map */
+
+ .custom-popup {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .custom-popup h4 {
+    text-align: center;
+    color: var(--sitePink);
+ }
+ 
+ .custom-popup p {
+    color: var(--black);
+ }
+
+ .mapboxgl-popup-close-button {
+    color: var(--black);
+    font-size: 16px;
+    margin: 0 .25rem;
+  }

@@ -4,6 +4,7 @@ import Footer from './Footer'
 import MenuBoard from './MenuBoard'
 import LotusBanner from './LotusBanner'
 import SpecialtyBoard from './SpecialtyBoard'
+import LocationMap from './LocationMap'
 
 const Layout = ({ children }) => {
   return (
@@ -19,6 +20,7 @@ const Layout = ({ children }) => {
         <MenuBoard />
         <SpecialtyBoard />
         <LotusBanner />
+        <LocationMap />
         </>
       </div>
       <Footer></Footer>

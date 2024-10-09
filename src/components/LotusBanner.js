@@ -1,6 +1,12 @@
 import React from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 
+const lotusBanner = {
+    margin: '1rem 0 0 0',
+    borderRadius: '0.5rem',
+    overflow: 'hidden'
+}
+
 const bannerContainer = {
     position: 'relative'
 }
@@ -32,7 +38,7 @@ const glassP = {
 const LotusBanner = () => {
     return (
         <>
-            <div>
+            <div className='lotus-banner' style={lotusBanner}>
                 <div style={bannerContainer}>
                     <StaticImage
                         src="../images/lotus-cans.webp"
@@ -41,7 +47,7 @@ const LotusBanner = () => {
                         loading="lazy"
                         style={lotusImg}
                     />
-                    <p style={glassP}>
+                    <p style={glassP} className='lotus-banner-p'>
                         We are excited to offer Plant power lotus energy drinks!
                     </p>
                 </div>

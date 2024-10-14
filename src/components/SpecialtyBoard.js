@@ -118,7 +118,6 @@ const SpecialtyBoard = () => (
     <StaticQuery
       query={specialtyDrink}
       render={(data) => {
-        console.log(data)
         const drink = data.allContentfulMenuDrink.edges;
         return (
           <div style={specialtyBoardContainer}>

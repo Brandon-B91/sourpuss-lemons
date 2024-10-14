@@ -88,6 +88,12 @@ ul li {
 
  /* Location Map */
 
+ .custom-marker {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+ }
+
  .custom-popup {
     display: flex; 
     flex-direction: column;

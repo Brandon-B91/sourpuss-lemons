@@ -1,42 +1,116 @@
-import React, { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { useEffect, useRef, useState } from "react";
+import { getSrc } from 'gatsby-plugin-image'; 
+import { graphql, StaticQuery } from "gatsby";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+
+const mapHeader = {
+  fontSize: 'var(--fontMd)'
+}
 
 const MapboxExample = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
+  
+  // State to store the data
+  const [mapData, setMapData] = useState(null);
 
+  // This effect runs when mapData is set
   useEffect(() => {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbmJyb3duMDE2OSIsImEiOiJjbTIyZW02ZnUwNmJ2MnFvZndvcThncXNsIn0._mMkjvjQfDU6yaKuoVte3g';
+    if (mapData) {
+      const { icon, popupData, location } = mapData;
+      initializeMap(icon, popupData, location);
+    }
+  }, [mapData]); // Dependency array to run effect when mapData changes
+
+  const initializeMap = (icon, popupData, location) => {
+    mapboxgl.accessToken = "pk.eyJ1IjoiYnJhbmRvbmJyb3duMDE2OSIsImEiOiJjbTIyZW02ZnUwNmJ2MnFvZndvcThncXNsIn0._mMkjvjQfDU6yaKuoVte3g";
 
     mapRef.current = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [-106.7114429984042, 35.31153747198219],
-      zoom: 15
+      container: mapContainerRef.current,
+      style: "mapbox://styles/mapbox/streets-v12",
+      center: [location.latitude, location.longitude],
+      zoom: 15,
     });
 
-    var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
-    <div class="custom-popup">
-      <h4>Sourpuss Lemonade</h4>
-      <p>Come get a drink!</p>
-    </div>
-`);
-  
+    const lemon = getSrc(icon.lemon.gatsbyImage);
+    console.log(lemon)
 
-      var marker = new mapboxgl.Marker()
-      .setLngLat([-106.7114429984042, 35.31153747198219])
+    var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
+      <div class="custom-popup">
+        <h4>Sourpuss Lemonade</h4>
+        <p>${popupData.bodyText}</p>
+      </div>
+    `);
+  
+    const customMarker = document.createElement("div");
+    customMarker.className = "custom-marker"; 
+    customMarker.style.backgroundImage = `url(${lemon})`; 
+    customMarker.style.backgroundSize = 'cover'; 
+    customMarker.style.backgroundRepeat = 'no-repeat'; 
+
+    var marker = new mapboxgl.Marker(customMarker)
+      .setLngLat([location.latitude, location.longitude])
       .setPopup(popup) // Attach the popup to the marker
       .addTo(mapRef.current);
+  
+  };
 
-      marker.getElement().addEventListener('click', () => {
-        popup.toggle(); // This opens the popup on click
-      });
+  return (
+    <StaticQuery
+      query={combinedQuery}
+      render={(data) => {
+        // Extract data from the GraphQL response only once
+        const icon = data.allContentfulMapIcon.edges[0].node;
+        const popupData = data.allContentfulMapPopUp.edges[0].node;
+        const location = data.allContentfulMapLocation.edges[0].node;
 
-    return () => mapRef.current.colorremove();
-  }, []);
+        // Only set the state if mapData is not already set
+        if (!mapData) {
+          setMapData({ icon, popupData, location });
+        }
 
-  return <div id="map" ref={mapContainerRef} style={{ height: '25rem', margin: '1rem 0', borderRadius: '0.5rem' }}></div>;
+        return (
+          <>
+          <p style={mapHeader}></p>
+          <div
+            ref={mapContainerRef}
+            style={{ height: "25rem", margin: "1rem 0", borderRadius: "0.5rem" }}
+          ></div>
+          </>
+        );
+      }}
+    />
+  );
 };
 
 export default MapboxExample;
+
+const combinedQuery = graphql`
+  query {
+    allContentfulMapIcon {
+      edges {
+        node {
+          lemon {
+            gatsbyImage(height: 100, width: 100)
+          }
+        }
+      }
+    }
+    allContentfulMapPopUp {
+      edges {
+        node {
+          bodyText
+        }
+      }
+    }
+    allContentfulMapLocation {
+      edges {
+        node {
+          latitude
+          longitude
+        }
+      }
+    }
+  }
+`;

@@ -33,6 +33,7 @@ const Header = () => {
     </header>
     <div className="hero-section-img">
         <StaticImage
+          className='hero-img'
           src='../images/hero-img.jpeg'
           alt='Sourpuss Lemonade stand'
           placeholder="blurred"

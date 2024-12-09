@@ -19,7 +19,7 @@ const lotusImg = {
 
 const glassP = {
     backdropFilter: 'blur(9px)',
-    backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.15), rgba(255,255,255,0.15))',
+    backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.10), rgba(255,255,255,0.10))',
     border: '.5px solid #f4f4f4',
     fontSize: 'var(--fontSm)',
     textTransform: 'capitalize',

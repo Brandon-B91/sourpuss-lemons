@@ -5,24 +5,24 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 const mapHeader = {
-  fontSize: 'var(--fontMd)'
+  fontSize: 'var(--fontMd)',
+  color: 'var(--black)',
+  textAlign: 'center',
+  marginTop: '2rem'
 }
 
 const MapboxExample = () => {
   const mapContainerRef = useRef();
   const mapRef = useRef();
   
-  // State to store the data
   const [mapData, setMapData] = useState(null);
 
-  // This effect runs when mapData is set
   useEffect(() => {
     if (mapData) {
       const { icon, popupData, location } = mapData;
       initializeMap(icon, popupData, location);
     }
-  }, [mapData]); // Dependency array to run effect when mapData changes
-
+  }, [mapData]); 
   const initializeMap = (icon, popupData, location) => {
     mapboxgl.accessToken = "pk.eyJ1IjoiYnJhbmRvbmJyb3duMDE2OSIsImEiOiJjbTIyZW02ZnUwNmJ2MnFvZndvcThncXNsIn0._mMkjvjQfDU6yaKuoVte3g";
 
@@ -30,12 +30,11 @@ const MapboxExample = () => {
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [location.latitude, location.longitude],
-      zoom: 15,
+      zoom: 13,
     });
 
     const lemon = getSrc(icon.lemon.gatsbyImage);
-    console.log(lemon)
-
+    
     var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
       <div class="custom-popup">
         <h4>Sourpuss Lemonade</h4>
@@ -72,7 +71,7 @@ const MapboxExample = () => {
 
         return (
           <>
-          <p style={mapHeader}></p>
+          <p style={mapHeader}>Where are we today!</p>
           <div
             ref={mapContainerRef}
             style={{ height: "25rem", margin: "1rem 0", borderRadius: "0.5rem" }}

@@ -8,13 +8,18 @@ const lemonadeBoard = {
   padding: "1rem",
   borderRadius: ".5rem",
 };
+const ul = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat( auto-fit, minmax(250px, 1fr))',
+}
 
 const li = {
   display: "flex",
   alignItems: "center",
   textTransform: "uppercase",
   fontSize: "var(--fontMd)",
-  width: "90%",
+  width: "80%",
+  margin: '0 auto'
 };
 
 const menuH2 = {
@@ -36,7 +41,7 @@ const styleP = {
   fontFamily: "var(--mainFont)",
   transform: "translateY(-1rem) rotate(-30deg)",
   marginBottom: "0",
-  color: "var(--black",
+  color: "var(--siteYello)",
 };
 
 const bold = {
@@ -53,7 +58,8 @@ const hr = {
 
 const addFlavors = {
   padding: "0",
-  width: "90%",
+  width: "80%",
+  margin: '0 auto'
 };
 
 const addFlavorsLi = {
@@ -65,6 +71,9 @@ const addFlavorsTitle = {
   fontSize: "var(--fontMd)",
   display: "flex",
   alignItems: "center",
+  jsutifyContent: 'space-between',
+  width: '100%',
+  margin: '0 auto'
 };
 
 const spanSm = {
@@ -84,9 +93,12 @@ const MenuBoard = () => (
   <StaticQuery
     query={flavorsList}
     render={(data) => {
-      const flavor = data.allContentfulLemondadeTable.edges;
+      const flavor = data.allContentfulLemonadeTable.edges;
+      const showPrices = data.allContentfulShowPrices.edges[0]?.node.value;
+
       return (
         <div className="row m-0 mt-5 mb-5 menu-board">
+
           <p style={menuH2}>Check out our menu!</p>
           <div className="col-sm-12" style={lemonadeBoard}>
             <p style={h2}>
@@ -96,7 +108,7 @@ const MenuBoard = () => (
               32.OZ
             </p>
             <div style={hr} />
-            <ul>
+            <ul className="drinkTypes">
               <li style={li}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -138,7 +150,7 @@ const MenuBoard = () => (
                   </g>
                 </svg>
                 <div className="ms-2 mt-2 d-flex justify-content-between w-100">
-                  Lemonade <span style={spanBlack}>$5</span>
+                  Lemonade <span className={`${showPrices ? '' : 'd-none'} prices`} style={spanBlack}>$5</span>
                 </div>
               </li>
               <li style={li}>
@@ -182,7 +194,7 @@ const MenuBoard = () => (
                   </g>
                 </svg>
                 <div className="ms-2 mt-2 d-flex justify-content-between w-100">
-                  Limeade <span style={spanBlack}>$5</span>
+                  Limeade <span className={`${showPrices ? '' : 'd-none'} prices`} style={spanBlack}>$5</span>
                 </div>
               </li>
               <li style={li}>
@@ -226,7 +238,7 @@ const MenuBoard = () => (
                   </g>
                 </svg>
                 <div className="ms-2 mt-2 d-flex justify-content-between w-100">
-                  Arnold Palmer<span style={spanBlack}>$6</span>
+                  Arnold Palmer<span className={`${showPrices ? '' : 'd-none'} prices`} style={spanBlack}>$6</span>
                 </div>
               </li>
               <li style={li}>
@@ -270,7 +282,7 @@ const MenuBoard = () => (
                   </g>
                 </svg>
                 <div className="ms-2 mt-2 d-flex justify-content-between w-100">
-                  Lotus energy drink<span style={spanBlack}>$7</span>
+                  Lotus energy drink<span className={`${showPrices ? '' : 'd-none'} prices`} style={spanBlack}>$7</span>
                 </div>
               </li>
               <div style={hr}></div>
@@ -315,16 +327,20 @@ const MenuBoard = () => (
                       ></path>
                     </g>
                   </svg>
-                  <div className="ms-2 mt-2 text-uppercase d-flex justify-content-between w-100">
-                    Add Flavor{" "}
-                    <span style={spanBlack}>
-                      $1 <span style={spanSm}>each </span>
+                  <div className="mt-2 text-uppercase addFlavorTitle">
+                    <span className="addFlavor">
+                      Add Flavor
+                    </span>
+                    <span className={`${showPrices ? '' : 'd-none'} prices`} style={spanBlack}>
+                      $1 <span className="prices" style={spanSm}>each </span>
                     </span>
                   </div>
                 </div>
-                {flavor.map(({ node }, i) => (
-                  <li key={i} style={addFlavorsLi}>{node.flavorsMenu}</li>
-                ))}
+                <ul className="flavorsList" style={ul}>
+                  {flavor.map(({ node }, i) => (
+                    <li key={i} style={addFlavorsLi}>{node.flavorsMenu}</li>
+                  ))}
+                </ul>
               </ul>
             </ul>
             <div className="container">
@@ -344,11 +360,18 @@ const MenuBoard = () => (
 
 const flavorsList = graphql`
   query {
-    allContentfulLemondadeTable {
+    allContentfulLemonadeTable {
       edges {
         node {
           id
           flavorsMenu
+        }
+      }
+    }
+    allContentfulShowPrices {
+      edges {
+        node {
+          showPrices
         }
       }
     }

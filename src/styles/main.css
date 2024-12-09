@@ -1,117 +1,272 @@
-
 /* Global styles */
 :root {
-    /* Colors */
-    --sitePink: #F012C1;
-    --siteYellow: #FDE674;
-    --black: #000;
-    --fontColor: #f4f4f4;
-    --bodyFontColor: #f4f4f4;
+   /* Colors */
+   --sitePink: #F012C1;
+   --siteYellow: #FDE674;
+   --black: #000;
+   --fontColor: #f4f4f4;
+   --bodyFontColor: #f4f4f4;
 
-    /* Fonts */
-    --mainFont: open-sans;
+   /* Fonts */
+   --mainFont: open-sans;
 
-    /* Sizes */
-    --fontXs: 1rem;
-    --fontSm: 1.75rem;
-    --fontMd: 2.25rem;
-    --fontLg: 3.5rem;
+   /* Sizes */
+   --fontXs: 1rem;
+   --fontSm: 1.75rem;
+   --fontMd: 2.25rem;
+   --fontLg: 3.5rem;
 
 }
- 
+
 * {
-    box-sizing: border-box;
-    line-height: 1.6;
-    font-family: var(--mainFont);
-    margin: 0;
-    padding: 0;
+   box-sizing: border-box;
+   line-height: 1.6;
+   font-family: var(--mainFont);
+   margin: 0;
+   padding: 0;
+   text-transform: capitalize;
 }
 
 ul li {
-    list-style-type: none;
+   list-style-type: none;
 }
 
-/* Animations */ 
+.d-none { display: none !important; }
+
+/* Animations */
 
 @keyframes grow {
-    0%, 20%, 50%, 70%, 90%, 100% { 
-        transform: translateX(-50%) scale(1); 
-    }  
-    40%, 60%, 80% {
-        transform: translateX(-50%) scale(1.1);  
-    } 
+
+   0%,
+   20%,
+   50%,
+   70%,
+   90%,
+   100% {
+      transform: translateX(-50%) scale(1);
+   }
+
+   40%,
+   60%,
+   80% {
+      transform: translateX(-50%) scale(1.1);
+   }
 }
 
- /* Main */
+/* Main */
 
- html body {
-    background: #fff;
-    color: var(--bodyFontColor);
- }
+html body {
+   background: #fff;
+   color: var(--bodyFontColor);
+}
 
- /* Menu Board */
- .menu-board ul {
-    padding: 0 !important;
- }
+/* Header */
+@media(max-width: 768px) {
+   .hero-img {
+      min-height: 15rem;
+   }
+}
 
- /* Specialty Board */
+/* Menu Board */
+.menu-board ul {
+   padding: 0 !important;
+}
 
- .slick-slide { 
-    padding: 3rem 1rem;
+.menu-board .addFlavorTitle {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.menu-board .addFlavorTitle .addFlavor {
+   margin-left: .5rem;
+}
+
+@media(max-width: 768px) {
+   .menu-board p {
+      font-size: var(--fontMd) !important;
+   }
+
+   .menu-board .drinkTypes li {
+      font-size: var(--fontSm) !important;
+   }
+
+   .menu-board .flavorsList li {
+      font-size: var(--fontXs) !important;
+   }
+
+   .menu-board .addFlavor {
+      font-size: var(--fontSm) !important;
+   }
+}
+
+/* Specialty Board */
+
+.slick-slide {
+   padding: 3rem 1rem;
 }
 
 .drink-card {
-  min-height: 15rem;
-  max-width: 15rem;
-  margin: 0 1rem;
-  background: var(--sitePink);
-  color: var(--black);
-  position: relative;
-  border:  2px solid var(--siteYellow);
-  box-shadow: 0 0 8px black;
- }
+   min-height: 15rem;
+   max-width: 15rem;
+   margin: 0 1rem;
+   background: var(--sitePink);
+   color: var(--black);
+   position: relative;
+   border: 2px solid var(--siteYellow);
+   box-shadow: 0 0 8px black;
+}
 
- @media (max-width: 768px) {
-    .card { margin-bottom: 5rem; }
- }
+@media (max-width: 768px) {
+   .card {
+      margin-bottom: 5rem;
+   }
+}
 
- /* Lotus Banner */
+/* Lotus Banner */
 
- @media( max-width: 768px) {
-    .lotus-banner-p {
-        right: 5% !important;
-        font-size: 1rem !important;
-        max-width: 90% !important;
-        margin: 0 auto !important;
-     }
- }
+@media(max-width: 768px) {
+   .lotus-banner-p {
+      right: 5% !important;
+      font-size: 1rem !important;
+      max-width: 90% !important;
+      margin: 0 auto !important;
+   }
+}
 
- /* Location Map */
+/* Location Map */
 
- .custom-marker {
-    width: 3rem;
-    height: 3rem;
-    cursor: pointer;
- }
+.custom-marker {
+   width: 4rem;
+   height: 4rem;
+   cursor: pointer;
+}
 
- .custom-popup {
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
- }
+.custom-popup {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
 
- .custom-popup h4 {
-    text-align: center;
-    color: var(--sitePink);
- }
- 
- .custom-popup p {
-    color: var(--black);
- }
+.custom-popup h4 {
+   text-align: center;
+   color: var(--sitePink);
+}
 
- .mapboxgl-popup-close-button {
-    color: var(--black);
-    font-size: 16px;
-    margin: 0 .25rem;
-  }
+.custom-popup p {
+   color: var(--black);
+}
+
+.mapboxgl-popup-close-button {
+   color: var(--black);
+   font-size: 16px;
+   margin: 0 .25rem;
+   border: none;
+   outline: none;
+}
+
+/* Contact Form */
+
+.contactForm {
+   width: 100%;
+   background: var(--siteYellow);
+   border: .25rem solid var(--black);
+   box-shadow: 0 0 .5rem var(--siteYellow);
+   border-radius: .25rem;
+   padding: 2rem;
+   margin: 1rem auto;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.contactForm p {
+   width: 100%;
+   margin: 1rem 0;
+}
+
+.contactForm label {
+   position: relative;
+   width: 100%;
+}
+
+.contactForm input {
+   background: transparent;
+   outline: none;
+   border: 0.0625rem solid var(--black);
+   border-radius: .5rem;
+   padding: .25rem 1rem;
+   width: 100%;
+}
+
+.contactForm input:focus~span {
+   bottom: 125%;
+   font-size: .875rem;
+   transition: .4s all ease-in-out;
+   color: hsla(0, 0%, 0%, .7);
+}
+
+.contactForm input:not(:placeholder-shown) ~ span {
+   bottom: 125%;
+   font-size: .875rem;
+   transition: .4s all ease-in-out;
+   color: hsla(0, 0%, 0%, .7);
+}
+
+.contactForm span {
+   position: absolute;
+   bottom: 50%;
+   transform: translateY(60%);
+   left: 5%;
+   color: var(--black);
+}
+
+.contactForm button {
+   background: var(--sitePink);
+   border: none;
+   outline: none;
+   padding: .5rem 3rem;
+   border-radius: .25rem;
+   transition: .3s all ease-in-out;
+   width: 100%;
+}
+
+.contactForm button:hover {
+   box-shadow: 0 0 .75rem var(--sitePink);
+
+}
+
+@media(max-width: 768px) {
+   .contactForm {
+      width: 100%;
+   }
+
+   .contactP {
+      line-height: 1 !important;
+   }
+}
+
+/* Footer */
+
+.footer [class^=col] {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.footer [class^=col]:nth-of-type(2) {
+   flex-direction: row;
+}
+
+.footer [class^=col] a {
+   margin: .5rem;
+}
+
+@media(max-width: 768px) {
+   .footerP { line-height: 1 !important; }
+}

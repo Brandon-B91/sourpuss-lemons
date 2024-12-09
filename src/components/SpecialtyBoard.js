@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { graphql, StaticQuery } from "gatsby";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -39,7 +39,7 @@ const drinkCard = {
 
 const cardTitle = {
   position: 'absolute',
-  top: '-1.75rem',
+  top: '-10%',
   left: '50%',
   transform: 'translateX(-50%)',
   border: '2px solid var(--siteYellow)',
@@ -47,7 +47,7 @@ const cardTitle = {
   borderRadius: '.5rem',
   background: 'var(--sitePink)',
   boxShadow: '0 0 8px black',
-  width: '80%',
+  width: '90%',
   textAlign: 'center',
   fontSize: 'var(--fontXs)',
   color: 'var(--siteYellow)',
@@ -71,45 +71,50 @@ const cardImg = {
   border: '2px solid var(--siteYellow)',
   borderRadius: '.25rem',
   boxShadow: '0 0 8px black',
+  width: '6.25rem',
+  height: '6.25rem',
+}
+
+const cardImgImg = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover'
 }
 
 const settings = {
-  autoplay: false,
-  arrows: false,
   dots: true,
-  draggable: true,
+  arrows: false,
   infinite: true,
-  initialSlide: 0,
-  slidesToShow: 5,
+  speed: 500,
+  slidesToShow: 4,
   slidesToScroll: 1,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
-        initialSlide: 0,
-      },
+        infinite: true,
+        dots: true
+      }
     },
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
-        initialSlide: 0,
-      },
+        initialSlide: 2
+      }
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0,
-      },
-    },
-  ],
+        slidesToScroll: 1
+      }
+    }
+  ]
 };
-
 
 const SpecialtyBoard = () => (
   <div className=''style={specialtyBoard}>
@@ -134,9 +139,9 @@ const SpecialtyBoard = () => (
                   </div>
                   <div style={cardImg}
                     className="card-bottom">
-                    <StaticImage
-                      src='../images/ocean-wave-img.png'
-                      alt="ocean wave"
+                      <GatsbyImage
+                      style={cardImgImg}
+                      image={node.drinkImage.gatsbyImageData}
                       width={100}
                       height={100}
                     />
@@ -160,6 +165,9 @@ const specialtyDrink = graphql`
           contentful_id
           drinkName
           flavors
+          drinkImage {
+            gatsbyImageData(width: 100, formats: AUTO)
+          }
         }
       }
     }

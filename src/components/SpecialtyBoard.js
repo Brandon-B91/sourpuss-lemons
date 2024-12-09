@@ -85,9 +85,11 @@ const settings = {
   dots: true,
   arrows: false,
   infinite: true,
+  freeMode: true,
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
+  initialSlide: 0,
   responsive: [
     {
       breakpoint: 1024,
@@ -117,7 +119,7 @@ const settings = {
 };
 
 const SpecialtyBoard = () => (
-  <div className=''style={specialtyBoard}>
+  <div style={specialtyBoard}>
     <h2 style={menuH2}> Specialty Menu </h2>
 
     <StaticQuery

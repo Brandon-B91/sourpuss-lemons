@@ -94,7 +94,7 @@ const MenuBoard = () => (
     query={flavorsList}
     render={(data) => {
       const flavor = data.allContentfulLemonadeTable.edges;
-      const showPrices = data.allContentfulShowPrices.edges[0]?.node.value;
+      const showPrices = data.allContentfulShowPrices.edges[0]?.node.showPrices;
 
       return (
         <div className="row m-0 mt-5 mb-5 menu-board">

@@ -91,7 +91,7 @@ const combinedQuery = graphql`
       edges {
         node {
           lemon {
-            gatsbyImage(height: 100, width: 100)
+            gatsbyImage(height: 250, width: 250)
           }
         }
       }

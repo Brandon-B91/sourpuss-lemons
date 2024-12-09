@@ -110,7 +110,6 @@ html body {
 .drink-card {
    min-height: 15rem;
    max-width: 15rem;
-   margin: 0 1rem;
    background: var(--sitePink);
    color: var(--black);
    position: relative;
@@ -172,8 +171,8 @@ html body {
 .contactForm {
    width: 100%;
    background: var(--siteYellow);
-   border: .25rem solid var(--black);
-   box-shadow: 0 0 .5rem var(--siteYellow);
+   /* border: .25rem solid var(--black); */
+   box-shadow: 0 0 1rem var(--black);
    border-radius: .25rem;
    padding: 2rem;
    margin: 1rem auto;
@@ -192,12 +191,14 @@ html body {
 .contactForm label {
    position: relative;
    width: 100%;
+   transition: .4s all ease-in-out;
 }
 
 .contactForm input {
    background: transparent;
    outline: none;
    border: 0.0625rem solid var(--black);
+   box-shadow: 0 0 .5rem var(--black);
    border-radius: .5rem;
    padding: .25rem 1rem;
    width: 100%;
@@ -220,15 +221,17 @@ html body {
 .contactForm span {
    position: absolute;
    bottom: 50%;
-   transform: translateY(60%);
+   transform: translateY(50%);
    left: 5%;
    color: var(--black);
+   transition: .4s all ease-in-out;
 }
 
 .contactForm button {
    background: var(--sitePink);
    border: none;
    outline: none;
+   box-shadow: 0 0 .5rem var(--black);
    padding: .5rem 3rem;
    border-radius: .25rem;
    transition: .3s all ease-in-out;

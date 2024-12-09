@@ -105,6 +105,8 @@ html body {
 
 .slick-slide {
    padding: 3rem 1rem;
+   display: flex !important;
+   justify-content: center;
 }
 
 .drink-card {

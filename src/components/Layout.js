@@ -5,6 +5,7 @@ import MenuBoard from './MenuBoard'
 import LotusBanner from './LotusBanner'
 import SpecialtyBoard from './SpecialtyBoard'
 import LocationMap from './LocationMap'
+import Schedule from './Schedule'
 
 const Layout = ({ children }) => {
   return (
@@ -20,7 +21,7 @@ const Layout = ({ children }) => {
         <MenuBoard />
         <SpecialtyBoard />
         <LotusBanner />
-        <LocationMap />
+        <Schedule />
         </>
       </div>
       <Footer></Footer>

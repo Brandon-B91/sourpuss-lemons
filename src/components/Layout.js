@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
         <MenuBoard />
         <SpecialtyBoard />
         <LotusBanner />
-        <Schedule />
+        {/* <Schedule /> */}
         </>
       </div>
       <Footer></Footer>

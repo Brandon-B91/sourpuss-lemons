@@ -97,7 +97,7 @@ const Schedule = () => {
 
 
         </div> */}
-        <div className="col-sm-12">
+        <div className="col-sm-12 ">
             <LocationMap />
         </div>
         </div>

@@ -35,7 +35,7 @@ const Schedule = () => {
         <div className="row">
                       <p style={mapHeader}>Where are we today!</p>
 
-   <div className='col-sm-12 col-md-4'>
+   {/* <div className='col-sm-12 col-md-4'>
             <StaticQuery
                 query={scheduleList}
                 render={(data) => {
@@ -96,8 +96,8 @@ const Schedule = () => {
             />
 
 
-        </div>
-        <div className="col-sm-12 col-md-8">
+        </div> */}
+        <div className="col-sm-12">
             <LocationMap />
         </div>
         </div>
